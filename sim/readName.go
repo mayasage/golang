@@ -2,11 +2,12 @@ package sim
 
 import (
 	"fmt"
-	io2 "golang/util/io"
+	"golang/util/io"
+	"golang/util/os"
 )
 
 func ReadName() {
 	fmt.Print("Hi, what's your name?: ")
-	name := io2.ReadString()
-	fmt.Printf("Hi, %s!"+io2.LineSeparator(), name)
+	name := io.ReadString()
+	fmt.Printf("Hi, %s!"+os.LineSeparator(), name)
 }

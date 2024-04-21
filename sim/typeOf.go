@@ -2,12 +2,12 @@ package sim
 
 import (
 	"fmt"
-	"golang/util/io"
+	"golang/util/os"
 	"reflect"
 )
 
 func TypeOf() {
-	order := "%-25s %v" + io.LineSeparator()
+	order := "%-25s %v" + os.LineSeparator()
 
 	fmt.Printf(order, "reflect.TypeOf(1): ", reflect.TypeOf(1))
 	fmt.Printf(order, "reflect.TypeOf(1.1): ", reflect.TypeOf(1.1))

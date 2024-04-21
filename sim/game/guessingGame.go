@@ -1,14 +1,14 @@
 package game
 
 import (
-	io2 "golang/util/io"
+	"golang/util/io"
 	"golang/util/rand"
 )
 
-var pn = io2.Pn
+var pn = io.Pn
 
 func GuessingGame() {
-	num := rand.Int(0, 10)
+	num := rand.Int(0, 10, nil)
 	guess := -1
 	count := 0
 
@@ -19,7 +19,7 @@ func GuessingGame() {
 
 	for guess != num {
 		count += 1
-		guess = io2.ReadInt()
+		guess = io.ReadInt()
 
 		if guess == num {
 			pn("You guessed guess number!")
