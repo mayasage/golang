@@ -1,9 +1,10 @@
 package main
 
 import (
-	"golang/sim/game/hangman"
+	"golang/util/io"
+	"os"
 )
 
 func main() {
-	hangman.Hangman()
+	io.Pn("%v", os.Args[1:])
 }

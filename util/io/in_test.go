@@ -2,7 +2,11 @@ package io
 
 import (
 	"github.com/stretchr/testify/assert"
+	"golang/temp"
+	os2 "golang/util/os"
 	"golang/util/test"
+	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -178,4 +182,29 @@ func TestReadAlpha(t *testing.T) {
 	}, test.SetStdIn("a", func() ReadCharResponse {
 		return ReadAlpha("get_upper", "to_upper")
 	}))
+}
+
+func TestReadFile(t *testing.T) {
+	dir := temp.TestDir()
+	filePath := filepath.Join(dir, "somefile.txt")
+
+	ls := os2.LineSeparator()
+	content := "Hey there Boya" + ls + "Suck this" + ls
+
+	err := os.WriteFile(filePath, []byte(content), 0644)
+	if err != nil {
+		panic(err)
+	}
+
+	_content, err := ReadFile(filePath)
+	if err != nil {
+		panic(err)
+	}
+
+	assert.Equal(t, content, _content)
+
+	err = os.Remove(filePath)
+	if err != nil {
+		panic(err)
+	}
 }
